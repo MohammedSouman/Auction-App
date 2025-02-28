@@ -1,0 +1,38 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.nav-item .nav-link, .nav-item .action-btn {
+    position: relative;
+    border-radius: 10px;
+    padding: .5rem !important;
+    margin: 0 .5rem;
+
+}
+
+.nav-item .nav-link::before{
+    content: "";
+    /* width: 80%; */
+    width: 80%;
+    scale: 0;
+    position: absolute;
+    height: 2px;
+    background-color: red;
+    bottom: 0;
+}
+
+.nav-item .nav-link:hover, .nav-item .action-btn:hover {
+    background-color: #fff;
+    color: green !important;
+    transition: all .25s ease-in-out;
+
+}
+
+.navbar .search-item-div input:focus {
+    outline: none;
+    border: none;
+}
