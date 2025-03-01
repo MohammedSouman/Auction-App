@@ -16,9 +16,10 @@ const SignUp = () => {
         e.preventDefault();
         axios.post('http://localhost:3001/register', {name, email, password})
         .then(res => {console.log(res)
+            localStorage.setItem('username', name)
             navigate('/SignIn')
         })
-        .catch(err => console.log(err))  
+        .catch(err => console.err(err))  
     }
 
     

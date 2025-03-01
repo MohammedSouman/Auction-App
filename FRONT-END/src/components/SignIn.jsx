@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './SignUp.css'
 import { Outlet, Link} from 'react-router-dom'
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../context/UserContext';
+import axios from 'axios'
 import { useState } from 'react';
 
 
 const SignIn = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+
+    const { setUser } = useContext(UserContext)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -16,8 +19,12 @@ const SignIn = () => {
         axios.post('http://localhost:3001/login', {email, password})
         .then(res => {console.log(res)
             console.log("RES DATA = ", res.data)
-            if(res.data === "Login Succesful") {
+            if(res.data.status === "Login Succesful") {
+                setUser(res.data.username)
                 navigate('/')
+            }
+            else {
+              alert(res.data.status)
             }
         })
         .catch(err => console.log(err))  
